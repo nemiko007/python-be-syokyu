@@ -38,7 +38,8 @@ services:
       - "${APP_PORT:-18008}:${APP_PORT:-18008}"
     volumes:
       - .:/opt/python-be-syokyu-app
-    command: fastapi dev main.py --port=${APP_PORT:-18008} --host=0.0.0.0
+    working_dir: /opt/python-be-syokyu-app
+    command: python -m fastapi_cli dev app/main.py --port=${APP_PORT:-18008} --host=0.0.0.0
 
   adminer:
     image: adminer
